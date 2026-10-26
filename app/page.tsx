@@ -228,8 +228,6 @@ export default function Page() {
         </div>
       </section>
 
-
-
       <section className="services" id="layanan">
         <div><p className="section-kicker">/ Layanan kami</p><h2>Semua yang bisnis<br /><em>butuhkan.</em></h2></div>
         <div className="service-list">
@@ -414,9 +412,44 @@ export default function Page() {
         </div>
       </section>
 
-      <footer className="site-footer">
-        <div className="footer-main"><a className="brand-mark" href="#beranda"><span>Robo</span><strong>Komputer</strong><small>TM</small></a><p>Bangun lebih cepat.<br /><em>Bergerak lebih jauh.</em></p><a className="footer-cta" href="https://wa.me/6285216758721" target="_blank" rel="noreferrer">Mulai sekarang <span>↗</span></a></div>
-        <div className="footer-bottom"><span>© 2026 RoboKomputer. Semua hak dilindungi.</span><div><a href="#kapabilitas">Capabilities</a><a href="#proses">Proses</a><a href="#integrations">Integrations</a><a href="#developers">Developers</a><a href="#pricing">Pricing</a></div><span>Made for modern business</span></div>
+      <footer className="site-footer" id="kontak">
+        <div className="footer-top">
+          <div className="footer-brand-col">
+            <a className="brand-mark" href="#beranda">
+              <span>Robo</span><strong>Komputer</strong><small>TM</small>
+            </a>
+            <p className="footer-tagline">Bangun lebih cepat.<br /><em>Bergerak lebih jauh.</em></p>
+            <a className="footer-cta" href="https://wa.me/6285216758721" target="_blank" rel="noreferrer">
+              Mulai sekarang <span>↗</span>
+            </a>
+          </div>
+          <div className="footer-links-grid">
+            <div className="footer-col">
+              <h4>Navigasi</h4>
+              <a href="#beranda">Beranda</a>
+              <a href="#layanan">Layanan</a>
+              <a href="#kapabilitas">Capabilities</a>
+              <a href="#proses">Proses</a>
+            </div>
+            <div className="footer-col">
+              <h4>Ekosistem</h4>
+              <a href="#integrations">Integrations</a>
+              <a href="#developers">Developers</a>
+              <a href="#pricing">Pricing</a>
+            </div>
+            <div className="footer-col">
+              <h4>Kontak &amp; Legal</h4>
+              <a href="https://wa.me/6285216758721" target="_blank" rel="noreferrer">WhatsApp ↗</a>
+              <a href="#beranda">Bantuan</a>
+              <a href="#beranda">Kebijakan Privasi</a>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <span>&copy; 2026 RoboKomputer. Semua hak dilindungi.</span>
+          <span className="footer-center-note">Made for modern business &amp; enterprise growth</span>
+          <span>System Status: <strong className="text-emerald-600 font-mono">Operational</strong></span>
+        </div>
       </footer>
 
       <a
