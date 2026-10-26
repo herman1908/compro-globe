@@ -4,10 +4,12 @@ import { useEffect, useState } from 'react'
 import { MatrixSphere } from '@/components/matrix-sphere'
 
 const navItems = ['Beranda', 'Layanan', 'Proses', 'Developers', 'Kontak']
+const heroWords = ['bisnis.', 'startup.', 'enterprise.', 'masa depan.', 'operasional.']
 
 export default function Page() {
   const [activeDevTab, setActiveDevTab] = useState(0)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [currentWordIdx, setCurrentWordIdx] = useState(0)
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 24)
@@ -15,6 +17,13 @@ export default function Page() {
     handleScroll()
     window.addEventListener('scroll', handleScroll, { passive: true })
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWordIdx((prev) => (prev + 1) % heroWords.length)
+    }, 3000)
+    return () => clearInterval(interval)
   }, [])
 
   return (
@@ -34,7 +43,7 @@ export default function Page() {
       <section className="hero" id="beranda">
         <div className="hero-copy">
           <p className="eyebrow"><span /> Solusi digital untuk bisnis modern</p>
-          <h1>Bangun ide.<br /><em>Gerakkan</em> bisnis.</h1>
+          <h1>Bangun ide.<br />Gerakkan <span className="hero-rotating-word" key={currentWordIdx}><em>{heroWords[currentWordIdx]}</em></span></h1>
           <p className="hero-description">Aplikasi web, desktop, dan service laptop yang dirancang untuk membantu bisnis tumbuh lebih cepat, rapi, dan siap menghadapi masa depan.</p>
           <div className="hero-actions">
             <a className="primary-button" href="https://wa.me/6285216758721" target="_blank" rel="noreferrer">Mulai konsultasi <span>↗</span></a>

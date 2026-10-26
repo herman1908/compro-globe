@@ -14,12 +14,106 @@ a { color: inherit; text-decoration: none; }
 .site-header.is-scrolled { top: 16px; left: 24px; right: 24px; height: 72px; padding: 0 30px; border-color: rgba(17,17,17,.12); border-radius: 18px; background: rgba(255,255,255,.82); box-shadow: 0 12px 36px rgba(17,17,17,.08), 0 2px 8px rgba(17,17,17,.04); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
 .brand-mark { font-size: 24px; letter-spacing: -.06em; display: flex; align-items: flex-start; gap: 0; }
 .brand-mark span { font-weight: 500; }.brand-mark strong { color: #e36e22; font-weight: 700; }.brand-mark small { font: 9px 'DM Mono'; margin: 2px 0 0 7px; letter-spacing: 0; color: #777; }
-.desktop-nav { display: flex; gap: 42px; margin-left: 130px; font-size: 13px; color: #676767; }.desktop-nav a:hover { color: #111; }
-.header-cta { background: #111; color: #fff; border-radius: 999px; padding: 13px 20px; font-size: 12px; }.header-cta span, .primary-button span { margin-left: 10px; font-size: 16px; }
+
+/* Desktop Nav with hover scale and underline effect matching screenshot */
+.desktop-nav {
+  display: flex;
+  gap: 38px;
+  margin-left: 130px;
+  font-size: 13px;
+  color: #676767;
+  font-weight: 500;
+}
+.desktop-nav a {
+  position: relative;
+  transition: color 0.25s ease, transform 0.25s ease;
+  display: inline-block;
+}
+.desktop-nav a:hover {
+  color: #111;
+  transform: scale(1.05);
+}
+.desktop-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #111;
+  transition: width 0.25s ease;
+}
+.desktop-nav a:hover::after {
+  width: 100%;
+}
+
+/* Refined, elegant, proportional buttons */
+.header-cta {
+  background: #111;
+  color: #fff;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  display: inline-flex;
+  align-items: center;
+  transition: all 0.25s ease;
+}
+.header-cta:hover {
+  background: #e36e22;
+  transform: translateY(-1px);
+}
+.header-cta span, .primary-button span {
+  margin-left: 8px;
+  font-size: 14px;
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+.header-cta:hover span, .primary-button:hover span {
+  transform: translate(2px, -2px);
+}
+
 .hero { min-height: calc(100vh - 88px); max-width: 1440px; margin: 0 auto; display: grid; grid-template-columns: 48% 52%; align-items: center; padding: 32px 52px 48px; position: relative; }
 .hero-copy { position: relative; z-index: 2; max-width: 570px; }.eyebrow, .section-kicker { color: #777; font: 11px 'DM Mono'; text-transform: uppercase; letter-spacing: .12em; }.eyebrow span { display: inline-block; width: 26px; border-top: 1px solid #111; vertical-align: middle; margin-right: 10px; }
 h1 { font-size: clamp(54px, 7.2vw, 104px); letter-spacing: -.09em; line-height: .9; margin: 26px 0; font-weight: 600; }.hero h1 em, h2 em { color: #e36e22; font-style: normal; }
-.hero-description { max-width: 430px; color: #6b6b6b; line-height: 1.65; font-size: 15px; }.hero-actions { display: flex; align-items: center; gap: 28px; margin-top: 34px; }.primary-button { background: #111; color: white; padding: 16px 21px; border-radius: 999px; font-size: 13px; }.text-button { font-size: 13px; color: #555; }.text-button span { margin-left: 8px; }
+
+.hero-rotating-word {
+  display: inline-block;
+  animation: wordFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes wordFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-description { max-width: 430px; color: #6b6b6b; line-height: 1.65; font-size: 15px; }.hero-actions { display: flex; align-items: center; gap: 28px; margin-top: 34px; }
+
+.primary-button {
+  background: #111;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+}
+.primary-button:hover {
+  background: #e36e22;
+  transform: translateY(-2px);
+}
+
+.text-button { font-size: 13px; color: #555; }.text-button span { margin-left: 8px; }
 .proof-row { display: flex; gap: 28px; margin-top: 75px; color: #888; font: 11px 'DM Mono'; }.proof-row b { display: block; color: #111; font: 18px 'Inter', sans-serif; font-weight: 600; margin-bottom: 3px; }
 .sphere-stage { height: 620px; position: relative; display: grid; place-items: center; }.sphere-stage::before, .sphere-stage::after { display: none; }.sphere-halo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(82%, 620px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(196,199,198,.2) 0%, rgba(247,247,244,0) 65%); animation: spherePulse 6s ease-in-out infinite; }.sphere-halo::after { content: ''; position: absolute; inset: 11%; border: 1px solid rgba(93,99,101,.09); border-radius: 50%; box-shadow: 0 0 34px rgba(90,96,98,.08), inset 0 0 24px rgba(90,96,98,.05); }.sphere-stage::after { content: ''; position: absolute; left: 50%; top: 50%; width: min(74%, 470px); aspect-ratio: 1; border: 1px solid rgba(90,95,98,.08); border-radius: 50%; transform: translate(-50%, -50%) scaleY(.28); z-index: 2; pointer-events: none; }.matrix-sphere { width: 100%; height: 100%; position: relative; z-index: 3; }.sphere-label { position: absolute; z-index: 4; bottom: 89px; right: 22%; font: 10px 'DM Mono'; color: #898989; line-height: 1.7; }.sphere-label b { color: #111; font-weight: 500; }
 .services { position: relative; z-index: 2; border-top: 1px solid var(--line); max-width: 1336px; margin: 0 auto; padding: 90px 52px 110px; display: grid; grid-template-columns: 36% 64%; gap: 40px; }.services h2 { font-size: clamp(38px, 4.2vw, 62px); line-height: .95; letter-spacing: -.07em; margin: 20px 0; }.service-list article { display: grid; grid-template-columns: 46px 1fr 24px; gap: 24px; align-items: start; padding: 25px 0; border-top: 1px solid var(--line); }.service-list article:last-child { border-bottom: 1px solid var(--line); }.service-list article > span { font: 11px 'DM Mono'; color: #999; }.service-list h3 { font-size: 20px; margin: 0 0 7px; letter-spacing: -.04em; }.service-list p { color: #888; font-size: 13px; margin: 0; line-height: 1.5; }.service-list article > b { font-size: 20px; font-weight: 400; }
@@ -115,7 +209,36 @@ h1 { font-size: clamp(54px, 7.2vw, 104px); letter-spacing: -.09em; line-height: 
   line-height: 1.6;
   max-width: 470px;
 }
-@media (max-width: 800px) { .landing-page { padding-top: 72px; }.site-header { padding: 0 20px; height: 72px; }.site-header.is-scrolled { top: 12px; left: 12px; right: 12px; height: 64px; padding: 0 16px; border-radius: 15px; }.site-header.is-scrolled .brand-mark { font-size: 21px; }.site-header.is-scrolled .header-cta { padding: 9px 12px; font-size: 11px; }.desktop-nav { display: none; }.header-cta { padding: 10px 14px; }.hero { display: block; padding: 70px 20px 30px; min-height: auto; }.hero-copy { max-width: none; }.sphere-stage { height: 390px; margin-top: -12px; }.sphere-label { bottom: 42px; right: 9%; }.sphere-halo { width: 96%; }.proof-row { margin-top: 45px; gap: 15px; flex-wrap: wrap; }.services { padding: 65px 20px 80px; display: block; }.service-list { margin-top: 50px; }.service-list article { grid-template-columns: 30px 1fr 18px; gap: 12px; }.service-list h3 { font-size: 17px; }.capabilities { padding: 76px 20px 80px; }.capabilities-heading { display: block; margin-bottom: 38px; }.capabilities h2, .process-section h2 { font-size: 44px; }.capability-grid { grid-template-columns: 1fr; gap: 14px; }.capability-card { min-height: 315px; padding: 20px; }.card-visual { margin: 24px -20px -20px; }.process-section { display: block; padding: 76px 20px 80px; }.process-list { margin-top: 45px; }.process-list article { grid-template-columns: 38px 1fr; gap: 13px; } }
+
+@media (max-width: 800px) {
+  .landing-page { padding-top: 72px; }
+  .site-header { padding: 0 20px; height: 72px; }
+  .site-header.is-scrolled { top: 12px; left: 12px; right: 12px; height: 64px; padding: 0 16px; border-radius: 15px; }
+  .site-header.is-scrolled .brand-mark { font-size: 21px; }
+  .header-cta { padding: 7px 12px; font-size: 11px; }
+  .primary-button { padding: 9px 16px; font-size: 12px; }
+  .desktop-nav { display: none; }
+  .hero { display: block; padding: 70px 20px 30px; min-height: auto; }
+  .hero-copy { max-width: none; }
+  .sphere-stage { height: 390px; margin-top: -12px; }
+  .sphere-label { bottom: 42px; right: 9%; }
+  .sphere-halo { width: 96%; }
+  .proof-row { margin-top: 45px; gap: 15px; flex-wrap: wrap; }
+  .services { padding: 65px 20px 80px; display: block; }
+  .service-list { margin-top: 50px; }
+  .service-list article { grid-template-columns: 30px 1fr 18px; gap: 12px; }
+  .service-list h3 { font-size: 17px; }
+  .capabilities { padding: 76px 20px 80px; }
+  .capabilities-heading { display: block; margin-bottom: 38px; }
+  .capabilities h2, .process-section h2 { font-size: 44px; }
+  .capability-grid { grid-template-columns: 1fr; gap: 14px; }
+  .capability-card { min-height: 315px; padding: 20px; }
+  .card-visual { margin: 24px -20px -20px; }
+  .process-section { display: block; padding: 76px 20px 80px; }
+  .process-list { margin-top: 45px; }
+  .process-list article { grid-template-columns: 38px 1fr; gap: 13px; }
+}
+
 /* Poppins & Inter are reserved for an ultra-clean, elegant, and professional enterprise hierarchy. */
 h1, h2, h3, .brand-mark, .header-cta, .primary-button, .text-button { font-family: 'Poppins', sans-serif; }
 h1, h2 { font-weight: 600; }
@@ -211,8 +334,8 @@ h1, h2 { font-weight: 600; }
   background: #111;
   color: #fff;
   border-radius: 999px;
-  padding: 14px 22px;
-  font-size: 13px;
+  padding: 12px 20px;
+  font-size: 12px;
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   transition: background .3s ease, transform .3s ease;
@@ -223,7 +346,7 @@ h1, h2 { font-weight: 600; }
 }
 .footer-cta span {
   margin-left: 10px;
-  font-size: 16px;
+  font-size: 15px;
 }
 .footer-links-grid {
   display: grid;
@@ -316,5 +439,5 @@ h1, h2 { font-weight: 600; }
   .dev-tab-btn { padding: 12px 14px; font-size: 12px; gap: 8px; }
 }
 @media (max-width: 600px) {
-  .developers-tabs { grid-template-columns: 1fr; }
+  .keyframes { }
 }
