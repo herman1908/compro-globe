@@ -1,16 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { MatrixSphere } from '@/components/matrix-sphere'
 
 const navItems = ['Beranda', 'Layanan', 'Proses', 'Developers', 'Kontak']
 
 export default function Page() {
   const [activeDevTab, setActiveDevTab] = useState(0)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 24)
+
+    handleScroll()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   return (
     <main className="landing-page">
       <div className="grid-overlay" aria-hidden="true" />
-      <header className="site-header">
+      <header className={`site-header ${isScrolled ? 'is-scrolled' : ''}`}>
         <a className="brand-mark" href="#beranda" aria-label="RoboKomputer beranda">
           <span>Robo</span><strong>Komputer</strong>
           <small>TM</small>
