@@ -26,6 +26,24 @@ export default function Page() {
     return () => clearInterval(interval)
   }, [])
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed')
+          }
+        })
+      },
+      { threshold: 0.1 }
+    )
+
+    const sections = document.querySelectorAll('.reveal-section')
+    sections.forEach((sec) => observer.observe(sec))
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <main className="landing-page">
       <div className="grid-overlay" aria-hidden="true" />
@@ -58,7 +76,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="capabilities" id="kapabilitas">
+      <section className="capabilities reveal-section" id="kapabilitas">
         <div className="capabilities-heading">
           <p className="section-kicker">Capabilities</p>
           <h2>Semua yang kamu<br /><em>butuhkan.</em></h2>
@@ -114,7 +132,7 @@ export default function Page() {
             <span>02</span>
             <div>
               <h3>AI-Native Workflows</h3>
-              <p>Bangun alur kerja cerdas dengan otomasi dan teknologi AI yang membantu tim bekerja lebih efisien.</p>
+              <p>Penggunaan AI lebih di tekankan pada Workflow. Untuk membangun alur kerja cerdas dengan otomasi dan teknologi AI yang membantu tim bekerja lebih efisien dan tepat sasaran. Karena penggunaan AI secara masive di Source code dan Logic serta Algoritma Pemrograman akan membuat Crash dan Isu security warnings dan vulnerabilities yang tak kunjung reda.</p>
             </div>
             <div className="card-visual ai-visual" aria-hidden="true">
               <svg viewBox="0 0 200 160" className="w-full h-full">
@@ -237,7 +255,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="services" id="layanan">
+      <section className="services reveal-section" id="layanan">
         <div><p className="section-kicker">/ Layanan kami</p><h2>Semua yang bisnis<br /><em>butuhkan.</em></h2></div>
         <div className="service-list">
           <article><span>01</span><div><h3>Aplikasi web & desktop</h3><p>Digitalisasi proses kerja dengan sistem yang cepat dan mudah digunakan.</p></div><b>↗</b></article>
@@ -246,7 +264,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="process-section" id="proses">
+      <section className="process-section reveal-section" id="proses">
         <div>
           <p className="section-kicker">/ Proses kerja</p>
           <h2>Dari ide ke<br /><em>produksi.</em></h2>
@@ -276,7 +294,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="integrations" id="integrations">
+      <section className="integrations reveal-section" id="integrations">
         <div className="integrations-heading">
           <p className="section-kicker">Integrations</p>
           <h2>Works with everything<br /><em>you already use.</em></h2>
@@ -297,7 +315,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="developers-section" id="developers">
+      <section className="developers-section reveal-section" id="developers">
         <div className="developers-heading">
           <p className="section-kicker">/ For developers</p>
           <h2>Integrasi kilat.<br /><em>Developer-first.</em></h2>
@@ -372,7 +390,7 @@ export default function Page() {
         </div>
       </section>
 
-      <section className="pricing-section" id="pricing">
+      <section className="pricing-section reveal-section" id="pricing">
         <div className="pricing-heading">
           <p className="section-kicker">Pricing</p>
           <h2>Simple pricing.<br /><em>Serious results.</em></h2>
