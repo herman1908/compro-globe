@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import { MatrixSphere } from '@/components/matrix-sphere'
 
-const navItems = ['Beranda', 'Layanan', 'Proses', 'Developers', 'Kontak']
+const navItems = ['Beranda', 'Layanan', 'Proses', 'Portfolio', 'Developers', 'Kontak']
 const heroWords = ['bisnis.', 'startup.', 'enterprise.', 'masa depan.', 'operasional.']
 
 export default function Page() {
@@ -132,7 +132,7 @@ export default function Page() {
             <span>02</span>
             <div>
               <h3>AI-Native Workflows</h3>
-              <p>Penggunaan AI lebih di tekankan pada Workflow. Untuk membangun alur kerja cerdas dengan otomasi dan teknologi AI yang membantu tim bekerja lebih efisien dan tepat sasaran. Karena penggunaan AI secara masive di Source code dan Logic serta Algoritma Pemrograman akan membuat Crash dan Isu security warnings dan vulnerabilities yang tak kunjung reda.</p>
+              <p>Penggunaan AI lebih di tekankan pada Workflow. Untuk membangun alur kerja cerdas dengan otomasi dan teknologi AI yang membantu tim bekerja lebih efisien dan tepat sasaran. Karena penggunaan AI secara masif pada Source code dan Logic serta Algoritma Pemrograman akan membuat Crash dan Isu security warnings dan vulnerabilities yang tak kunjung reda.</p>
             </div>
             <div className="card-visual ai-visual" aria-hidden="true">
               <svg viewBox="0 0 200 160" className="w-full h-full">
@@ -435,6 +435,36 @@ export default function Page() {
             </ul>
             <div className="price"><strong>Custom</strong><span>dibuat untukmu</span></div>
             <a href="https://wa.me/6285216758721" target="_blank" rel="noreferrer">Hubungi kami <span>↗</span></a>
+          </article>
+        </div>
+      </section>
+
+      <section className="portfolio-section reveal-section" id="portfolio">
+        <div className="portfolio-heading">
+          <div>
+            <p className="section-kicker">Portfolio</p>
+            <h2>Karya &amp; Prototype.<br /><em>Inovasi tanpa henti.</em></h2>
+          </div>
+          <p>Jelajahi proyek-proyek digital yang telah kami implementasikan untuk klien maupun blueprint prototype masa depan.</p>
+        </div>
+        <div className="portfolio-grid">
+          <article className="portfolio-card">
+            <span className="portfolio-tag">Live Production</span>
+            <h3>RoboWork Platform</h3>
+            <p>Platform ekosistem kerja dan kolaborasi digital modern untuk produktivitas tim dan manajemen proyek terpadu.</p>
+            <a className="portfolio-link" href="https://robo.work.gd/" target="_blank" rel="noreferrer">Buka portfolio <span>↗</span></a>
+          </article>
+          <article className="portfolio-card">
+            <span className="portfolio-tag">Client Implementation</span>
+            <h3>Enterprise Dashboard</h3>
+            <p>Dashboard analitik realtime dan manajemen inventaris untuk operasional bisnis skala menengah hingga besar.</p>
+            <a className="portfolio-link" href="https://robo.work.gd/" target="_blank" rel="noreferrer">Lihat detail <span>↗</span></a>
+          </article>
+          <article className="portfolio-card">
+            <span className="portfolio-tag">Blueprint / Prototype</span>
+            <h3>AI Automation Core</h3>
+            <p>Konsep sistem otomasi berbasis kecerdasan buatan untuk efisiensi alur kerja otomatis dan pengambilan keputusan, seperti agen Chatbot dan workflow n8n.</p>
+            <a className="portfolio-link" href="https://robo.work.gd/" target="_blank" rel="noreferrer">Eksplor blueprint <span>↗</span></a>
           </article>
         </div>
       </section>

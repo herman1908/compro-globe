@@ -5,6 +5,9 @@ import './globals.css'
 export const metadata: Metadata = {
   title: 'RoboKomputer — Solusi Digital untuk Bisnis Modern',
   description: 'Aplikasi web, desktop, dashboard realtime, dan service laptop untuk membantu bisnis tumbuh lebih cepat.',
+  icons: {
+    icon: '/icon.svg',
+  },
 }
 
 export const viewport: Viewport = {

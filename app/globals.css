@@ -480,3 +480,26 @@ h1, h2 { font-weight: 600; }
   opacity: 1;
   transform: translateY(0);
 }
+
+.portfolio-section { position: relative; z-index: 2; max-width: 1336px; margin: 0 auto; padding: 120px 52px 128px; border-top: 1px solid var(--line); }
+.portfolio-heading { display: flex; justify-content: space-between; align-items: end; margin-bottom: 58px; }
+.portfolio-heading h2 { font-size: clamp(42px, 5vw, 72px); line-height: .94; letter-spacing: -.08em; margin: 20px 0 0; font-family: 'Poppins', sans-serif; font-weight: 600; }
+.portfolio-heading h2 em { color: #e36e22; font-style: normal; }
+.portfolio-heading p { color: #777; font-size: 14px; line-height: 1.6; max-width: 400px; margin: 0 0 4px; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.portfolio-card { background: rgba(255,255,255,.2); border: 1px solid var(--line); border-radius: 4px; padding: 30px; display: flex; flex-direction: column; transition: all .35s ease; position: relative; overflow: hidden; }
+.portfolio-card:hover { transform: translateY(-5px); border-color: #b7b7b2; background: rgba(255,255,255,.72); }
+.portfolio-tag { display: inline-block; font: 10px 'DM Mono'; text-transform: uppercase; letter-spacing: .08em; color: #e36e22; background: rgba(227, 110, 34, 0.08); padding: 4px 10px; border-radius: 999px; align-self: start; margin-bottom: 20px; }
+.portfolio-card h3 { font-size: 24px; font-family: 'Poppins', sans-serif; font-weight: 600; letter-spacing: -.04em; margin: 0 0 12px; }
+.portfolio-card p { color: #777; font-size: 13px; line-height: 1.6; margin: 0 0 24px; flex-grow: 1; }
+.portfolio-link { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid var(--line); font: 500 13px 'Poppins', sans-serif; color: #111; transition: color .2s ease; }
+.portfolio-link span { font-size: 16px; }
+.portfolio-link:hover { color: #e36e22; }
+
+@media (max-width: 900px) {
+  .portfolio-section { padding: 80px 20px; }
+  .portfolio-heading { display: block; margin-bottom: 38px; }
+  .portfolio-heading h2 { font-size: 44px; margin: 18px 0; }
+  .portfolio-heading p { max-width: none; margin-top: 16px; }
+  .portfolio-grid { grid-template-columns: 1fr; gap: 18px; }
+}
