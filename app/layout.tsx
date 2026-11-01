@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     siteName: 'RoboKomputer',
     images: [
       {
-        url: '/placeholder.jpg',
+        url: '/placeholder_t.jpg',
         width: 1200,
         height: 630,
         alt: 'RoboKomputer Preview',
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'RoboKomputer — Solusi Digital untuk Bisnis Modern',
     description: 'Aplikasi web, desktop, dashboard realtime, dan service laptop untuk membantu bisnis tumbuh lebih cepat.',
-    images: ['/placeholder.jpg'],
+    images: ['/placeholder_t.jpg'],
   },
 }
 
