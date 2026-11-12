@@ -10,8 +10,13 @@ body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Int
 a { color: inherit; text-decoration: none; }
 .landing-page { min-height: 100vh; padding-top: 88px; overflow: hidden; position: relative; background: var(--paper); }
 .grid-overlay { position: absolute; inset: 0; opacity: .6; pointer-events: none; background-image: linear-gradient(to right, rgba(0,0,0,.065) 1px, transparent 1px), linear-gradient(to bottom, rgba(0,0,0,.065) 1px, transparent 1px); background-size: 120px 112px; mask-image: linear-gradient(to right, transparent, black 30%, black 100%); }
-.site-header { position: fixed; inset: 0 0 auto; z-index: 50; height: 88px; max-width: 1440px; margin: 0 auto; padding: 0 52px; display: flex; align-items: center; justify-content: space-between; border: 1px solid transparent; border-bottom-color: rgba(0,0,0,.08); background: var(--paper); transition: top .35s ease, left .35s ease, right .35s ease, height .35s ease, padding .35s ease, border-color .35s ease, border-radius .35s ease, background-color .35s ease, box-shadow .35s ease, backdrop-filter .35s ease; }
-.site-header.is-scrolled { top: 16px; left: 24px; right: 24px; height: 72px; padding: 0 30px; border-color: rgba(17,17,17,.12); border-radius: 18px; background: rgba(255,255,255,.82); box-shadow: 0 12px 36px rgba(17,17,17,.08), 0 2px 8px rgba(17,17,17,.04); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.site-header { position: fixed; inset: 0 0 auto; z-index: 50; height: 88px; max-width: 1440px; margin: 0 auto; padding: 0 52px; display: flex; align-items: center; justify-content: space-between; border: 1px solid transparent; border-bottom-color: rgba(0,0,0,.08); background: var(--paper); transition: top .35s cubic-bezier(0.16, 1, 0.3, 1), left .35s cubic-bezier(0.16, 1, 0.3, 1), right .35s cubic-bezier(0.16, 1, 0.3, 1), width .35s cubic-bezier(0.16, 1, 0.3, 1), height .35s cubic-bezier(0.16, 1, 0.3, 1), padding .35s cubic-bezier(0.16, 1, 0.3, 1), border-color .35s ease, border-radius .35s ease, background-color .35s ease, box-shadow .35s ease, backdrop-filter .35s ease; }
+.site-header.is-scrolled { top: 16px; left: 24px; right: auto; width: max-content; height: 60px; padding: 0 24px; border-color: rgba(17,17,17,.12); border-radius: 999px; background: rgba(255,255,255,.85); box-shadow: 0 10px 30px rgba(17,17,17,.08), 0 2px 6px rgba(17,17,17,.03); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
+.site-header.is-scrolled:hover { right: 24px; width: auto; max-width: 1440px; height: 72px; padding: 0 30px; border-radius: 18px; background: rgba(255,255,255,.96); box-shadow: 0 16px 40px rgba(17,17,17,.12), 0 4px 12px rgba(17,17,17,.06); }
+.site-header.is-scrolled .desktop-nav,
+.site-header.is-scrolled .header-cta { opacity: 0; visibility: hidden; width: 0; margin: 0; padding: 0; overflow: hidden; pointer-events: none; white-space: nowrap; transition: opacity 0.2s ease, width 0.3s ease, margin 0.3s ease, padding 0.3s ease, visibility 0.2s ease; }
+.site-header.is-scrolled:hover .desktop-nav,
+.site-header.is-scrolled:hover .header-cta { opacity: 1; visibility: visible; width: auto; margin: 0; padding: 0; pointer-events: auto; transition: opacity 0.3s ease 0.1s, visibility 0.3s ease 0.1s, width 0.3s ease; }
 .brand-mark { font-size: 24px; letter-spacing: -.06em; display: flex; align-items: flex-start; gap: 0; }
 .brand-mark span { font-weight: 500; }.brand-mark strong { color: #e36e22; font-weight: 700; }.brand-mark small { font: 9px 'DM Mono'; margin: 2px 0 0 7px; letter-spacing: 0; color: #777; }
 
@@ -213,7 +218,8 @@ h1 { font-size: clamp(54px, 7.2vw, 104px); letter-spacing: -.09em; line-height: 
 @media (max-width: 800px) {
   .landing-page { padding-top: 72px; }
   .site-header { padding: 0 20px; height: 72px; }
-  .site-header.is-scrolled { top: 12px; left: 12px; right: 12px; height: 64px; padding: 0 16px; border-radius: 15px; }
+  .site-header.is-scrolled { top: 12px; left: 12px; right: 12px; width: auto; height: 64px; padding: 0 16px; border-radius: 15px; }
+  .site-header.is-scrolled .header-cta { opacity: 1; visibility: visible; width: auto; pointer-events: auto; }
   .site-header.is-scrolled .brand-mark { font-size: 21px; }
   .header-cta { padding: 7px 12px; font-size: 11px; }
   .primary-button { padding: 9px 16px; font-size: 12px; }
