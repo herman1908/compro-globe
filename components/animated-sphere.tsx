@@ -33,28 +33,6 @@ export function AnimatedSphere() {
     resize();
     window.addEventListener("resize", resize);
 
-    const handlePointerMove = (e: PointerEvent | TouchEvent) => {
-      const clientX = 'touches' in e ? e.touches[0].clientX : (e as PointerEvent).clientX;
-      const clientY = 'touches' in e ? e.touches[0].clientY : (e as PointerEvent).clientY;
-      
-      const rect = canvas.getBoundingClientRect();
-      const x = ((clientX - rect.left) / rect.width - 0.5) * 2;
-      const y = ((clientY - rect.top) / rect.height - 0.5) * 2;
-
-      if (isInteracting) {
-        const deltaX = clientX - lastX;
-        const deltaY = clientY - lastY;
-        currentRotY += deltaX * 0.008;
-        currentRotX -= deltaY * 0.008;
-      } else {
-        // Follow mouse/touch direction when hovered/moving
-        currentRotY += x * 0.02;
-        currentRotX -= y * 0.02;
-      }
-      lastX = clientX;
-      lastY = clientY;
-    };
-
     const handlePointerDown = (e: PointerEvent | TouchEvent) => {
       isInteracting = true;
       const clientX = 'touches' in e ? e.touches[0].clientX : (e as PointerEvent).clientX;
@@ -63,16 +41,30 @@ export function AnimatedSphere() {
       lastY = clientY;
     };
 
+    const handlePointerMove = (e: PointerEvent | TouchEvent) => {
+      if (!isInteracting) return;
+      const clientX = 'touches' in e ? e.touches[0].clientX : (e as PointerEvent).clientX;
+      const clientY = 'touches' in e ? e.touches[0].clientY : (e as PointerEvent).clientY;
+      
+      const deltaX = clientX - lastX;
+      const deltaY = clientY - lastY;
+      currentRotY += deltaX * 0.008;
+      currentRotX -= deltaY * 0.008;
+
+      lastX = clientX;
+      lastY = clientY;
+    };
+
     const handlePointerUp = () => {
       isInteracting = false;
     };
 
-    canvas.addEventListener("pointermove", handlePointerMove as EventListener);
     canvas.addEventListener("pointerdown", handlePointerDown as EventListener);
+    window.addEventListener("pointermove", handlePointerMove as EventListener);
     window.addEventListener("pointerup", handlePointerUp);
 
-    canvas.addEventListener("touchmove", handlePointerMove as EventListener, { passive: true });
     canvas.addEventListener("touchstart", handlePointerDown as EventListener, { passive: true });
+    window.addEventListener("touchmove", handlePointerMove as EventListener, { passive: true });
     window.addEventListener("touchend", handlePointerUp);
 
     const render = () => {
@@ -124,7 +116,7 @@ export function AnimatedSphere() {
       // Sort by z for depth
       points.sort((a, b) => a.z - b.z);
 
-      // Draw points with soft gray color (not too harsh/bold)
+      // Draw points with soft gray color
       points.forEach((point) => {
         const alpha = 0.2 + (point.z + 1) * 0.4;
         ctx.fillStyle = `rgba(105, 110, 115, ${alpha})`;
@@ -143,11 +135,11 @@ export function AnimatedSphere() {
 
     return () => {
       window.removeEventListener("resize", resize);
-      canvas.removeEventListener("pointermove", handlePointerMove as EventListener);
       canvas.removeEventListener("pointerdown", handlePointerDown as EventListener);
+      window.removeEventListener("pointermove", handlePointerMove as EventListener);
       window.removeEventListener("pointerup", handlePointerUp);
-      canvas.removeEventListener("touchmove", handlePointerMove as EventListener);
-      canvas.removeEventListener("touchstart",handlePointerDown as EventListener);
+      canvas.removeEventListener("touchstart", handlePointerDown as EventListener);
+      window.removeEventListener("touchmove", handlePointerMove as EventListener);
       window.removeEventListener("touchend", handlePointerUp);
       cancelAnimationFrame(frameRef.current);
     };
@@ -156,8 +148,8 @@ export function AnimatedSphere() {
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-full cursor-grab active:cursor-grabbing touch-none"
-      style={{ display: "block" }}
+      className="w-full h-full cursor-grab active:cursor-grabbing"
+      style={{ display: "block", touchAction: "pan-y" }}
     />
   );
 }
